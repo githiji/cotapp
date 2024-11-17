@@ -1,0 +1,16 @@
+{%extends 'main/base.html' %}
+
+{%block content%}
+<section>
+    <h1>add a new symbol</h1>
+    <form action="" method="post">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="submit" name="add" value="add">submit</button>
+    </form>
+</section>
+
+<section>
+    <h2>this is where cot will appear</h2>
+</section>
+{%endblock%}

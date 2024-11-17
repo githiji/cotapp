@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Style for sidebar */
+.sidebar {
+    height: 100vh; /* Full-height */
+    width: 200px; /* Set the width of the sidebar */
+    position: fixed; /* Stay in place */
+    top: 0;
+    left: 0;
+    background-color: #333; /* Dark background color */
+    padding-top: 20px;
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+/* Links inside the sidebar */
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    text-align: left;
+}
+
+/* Change color on hover */
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+/* Style for the main content area */
+.content {
+    margin-left: 220px; /* Same width as the sidebar */
+    padding: 20px;
+}
+.home1 {
+    background-image: url('https://imgs.search.brave.com/Vj-eJbzLDixBrAafVfWQ2b8SGih_7x8f6xPS4fKxk0I/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YmFua3JhdGUuY29t/L2JycC8yMDI0LzEw/LzE2MTcxNTUwL0J1/bGwtdnMtYmVhci1t/YXJrZXQuanBnP2F1/dG89d2VicCZvcHRp/bWl6ZT1oaWdoJmNy/b3A9MTY6OQ');
+}
+
+/* Style for the top menu */
+.menu {
+    text-align: center;
+    padding: 10px;
+    background-color: #444;
+}
+
+.menu a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
