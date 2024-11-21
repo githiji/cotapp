@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Stock, Correlation, COTReport
 from .forms import StockForm
 from django.views.generic import ListView, CreateView
+from . import cot
 
 def home(response):
     return render(response, 'main/home.html')
@@ -28,10 +29,18 @@ def add_stock(request):
         form = StockForm()
     return render(request, 'main/create.html', {'form': form})
    
-class COTReportListView(ListView):
-    model = COTReport
-    template_name = 'main/cot.html'
-    context_object_name = 'cotreports'
-    paginate_by = 10
+def view_cot(request):
+    if request.method == 'POST':
+        if request.POST.get('collect'):
+            market_list = Stock.objects.all()
+            for market in market_list:
 
+                # https://docs.python.org/3/library/pdb.html#debugger-commands
+                breakpoint()
+
+                if   cot.data_finder(market.symbol,cot.fetch_page()) != None:
+                    longs, shorts = cot.data_finder(market.symbol, cot.fetch_page())
+                    cot.save_data(market.symbol, longs, shorts)
+    return render(request, 'main/cot.html', {'reports': COTReport.objects.all()})
+              
 
