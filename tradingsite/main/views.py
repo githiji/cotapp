@@ -22,9 +22,10 @@ def add_stock(request):
         form = StockForm(request.POST)
         if form.is_valid():
             new_stock = form.cleaned_data['name']
-            t = Stock(name=new_stock)
+            
+            t = Stock(symbol=new_stock)
             t.save()
-            return render(request, 'main/index.html')
+            return HttpResponseRedirect('/index/')
     else:
         form = StockForm()
     return render(request, 'main/create.html', {'form': form})
@@ -34,13 +35,12 @@ def view_cot(request):
         if request.POST.get('collect'):
             market_list = Stock.objects.all()
             for market in market_list:
-
                 # https://docs.python.org/3/library/pdb.html#debugger-commands
-                breakpoint()
-
-                if   cot.data_finder(market.symbol,cot.fetch_page()) != None:
+                if   cot.data_finder(market.symbol,cot.fetch_page()) != None or []:
                     longs, shorts = cot.data_finder(market.symbol, cot.fetch_page())
                     cot.save_data(market.symbol, longs, shorts)
+                else:
+                    return HttpResponse("some data in your database has error")
     return render(request, 'main/cot.html', {'reports': COTReport.objects.all()})
               
 
