@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>COT Reports for Markets</h1>
+
+<div class="table-container">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Market</th>
+                <th>Symbol</th>
+                <th>Report Date</th>
+                <th>Long Positions</th>
+                <th>Short Positions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for report in reports %}
+            <tr onclick="window.location.href='{{ report.market.id }}'">
+                <td>{{ report.market.name }}</td>
+                <td>{{ report.market.symbol }}</td>
+                <td>{{ report.report_date }}</td>
+                <td>{{ report.long_positions }}</td>
+                <td>{{ report.short_positions }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="form-container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="market" placeholder="Enter market" class="input-field">
+        <button type="submit" name="collect" value="collect" class="submit-button">Collect</button>
+    </form>
+</div>
+{% endblock %}
