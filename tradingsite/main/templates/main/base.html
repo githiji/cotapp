@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tradingsite</title>
+    <link rel="stylesheet" href="{% static 'mystyles.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      
+</head>
+<body>
+{%block body%} {%endblock%}
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="/create">Create</a>
+        <a href="/index">Index</a>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/login">Login</a>
+        <a href="/register">register</a>
+        <a href="/cot">cot</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <div class="menu">
+            <a href="/create">Create</a>
+            <a href="/index">Index</a>
+            <a href="/">Home</a>
+        </div>
+
+        {% block content %}
+        <h1>Welcome to TradingSite</h1>
+        <p>This is a test page for the trading site.</p>
+        <p>site for traders</p>
+        {% endblock %}
+    </div>
+
+</body>
+<footer><p>this site is made with django</p></footer>
+</html>

@@ -1,0 +1,25 @@
+{%extends 'main/base.html'%}
+
+{%block body%}
+<H1>this is where more symbol info will appear</H1>
+<canvas id="lineChart"></canvas>
+<script>
+    var chartData = JSON.parse('{{ data|escapejs }}');
+    var ctx = document.getElementById('lineChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Label 1', 'Label 2', 'Label 3'],
+            datasets: [{
+                label: chartData.stock,
+                data: [chartData.long, chartData.long, chartData.long],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+    })
+    // Your chart code goes in here
+</script>
+
+{%endblock%}
